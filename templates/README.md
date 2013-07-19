@@ -24,28 +24,35 @@ There are three types of files here in two broad categories:
 Lets break this down..
 
     <design>
- - You need this. Note the other type of xml file is for "Types"
+     
+* You need this. Note the other type of xml file is for "Types"
 
     <name>GoTalk 16</name>
-- What's the name of this file? What does it layout?
+
+* What's the name of this file? What does it layout?
     
-    <type>ipad</type>
-- What was it designed for (relates to Type file)
+         <type>ipad</type>
+
+* What was it designed for (relates to Type file)
     
-    <case>fullscreen</case>
-- Which case was it designed for?
+        <case>fullscreen</case>
+
+* Which case was it designed for?
     
-    <image source="GoTalk-16.svg" position="60,90" id="GoTalk16"/>
-- Name the image. Each image MUST have:
-* source = the name of the file (and must be SVG)
-* position = x,y co-ordinates (from Top Left) where it should be placed
-* id = not needed but maybe useful in the future..
+        <image source="GoTalk-16.svg" position="60,90" id="GoTalk16"/>
+
+* Name the image. Each image MUST have:
+    * source = the name of the file (and must be SVG)
+    * position = x,y co-ordinates (from Top Left) where it should be placed
+    * id = not needed but maybe useful in the future..
     
-        <image source="GoTalk-Nav.svg" position="57,44" id="GoTalkNav"/>
-- Note you can put multiple images in one design. 
+            <image source="GoTalk-Nav.svg" position="57,44" id="GoTalkNav"/>
+
+* Note you can put multiple images in one design. 
     
         </design>
-- You need this or horrible things will happen!
+
+* You need this or horrible things will happen!
 
 ###Types###
 
