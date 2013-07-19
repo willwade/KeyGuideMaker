@@ -1,0 +1,6 @@
+<design>
+    <name>iPadHomeButton</name>
+    <type>ipad</type>
+    <case>fullscreen</case>
+    <image source="iPadHomeButton.svg" position="626,233" id="iPadHomeButton"/> 
+</design>

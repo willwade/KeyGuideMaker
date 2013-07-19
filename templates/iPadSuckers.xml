@@ -1,0 +1,6 @@
+<design>
+    <name>iPadSuckers</name>
+    <type>ipad</type>
+    <case>fullscreen</case>
+    <image source="iPadSuckers.svg" position="0,0"/>
+</design>

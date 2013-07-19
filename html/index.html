@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>
+			KeyGuide Creator!
+		</title>
+		<link rel="stylesheet" type="text/css" href="view.css" media="all" />
+        <script type="text/javascript" src="view.js"></script> 
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function(){
+            $(".type").change(function(){
+                var id=$(this).val();
+                var dataString = 'id='+ id;
+                $.ajax({
+                    type: "POST",
+                    url: "ajax_templates.php",
+                    data: dataString,
+                    cache: false,
+                    success: function(html){
+                        $(".templates").html(html);} 
+                });
+            });
+        });
+        </script>
+</head>
+<body id="main_body">
+	<img id="top" src="top.png" alt="">
+	<div id="form_container">
+		<h1>
+			<a>
+				Keyguide creator!
+			</a>
+		</h1>
+		<form id="form_670561" class="appnitro" method="post" action="guidecreator.php">
+			<div class="form_description">
+				<h2>
+					KeyGuide Creator
+				</h2>
+				<p>
+					Make your keyguide you desire here!
+				</p>
+			</div>
+			<ul>
+				<li id="li_1">
+					<label class="description" for="element_1">
+						Choose your device
+					</label>
+					<div>
+						<select class="element select medium type" id="type" name="type">
+							<option value="" selected="selected">
+							</option>
+							<option value="1">
+								iPad
+							</option>
+							<option value="2">
+								iPad Mini
+							</option>
+							<option value="3">
+								Powerbox
+							</option>
+						</select>
+					</div>
+					<p class="guidelines" id="guide_1">
+						<small>
+							Choose the device you need a guide for
+						</small>
+					</p>
+				</li>
+				<li id="li_2">
+					<label class="description" for="element_1">
+						Choose your app 
+					</label>
+					<div>					
+						<select class="element select medium templates" id="element_1" name="templates">
+							<option value="" selected="selected">
+							</option>
+						</select>
+					</div>
+					<p class="guidelines" id="guide_1">
+						<small>
+							Choose the app - or keyguard layout you need
+						</small>
+					</p>
+				</li>
+				<li id="li_3">
+					<label class="description" for="element_2">
+						Choose options. NB: You probably don't want multiple attachment methods!
+					</label>
+					<span>
+						<input id="element_2_1" name="Opt_iPadHomeButton" class="element checkbox" type="checkbox" value="1" />
+						<label class="choice" for="element_2_1">
+							Home button hole
+						</label>
+						<input id="element_2_2" name="Opt_iPadSuckers" class="element checkbox" type="checkbox" value="1" />
+						<label class="choice" for="element_2_2">
+							Suckers for attachment
+						</label>
+						<input id="element_2_3" name="Opt_iPadMagnets" class="element checkbox" type="checkbox" value="1" />
+						<label class="choice" for="element_2_3">
+							Magnet holes for attachment
+						</label>
+					</span>
+				</li>
+				<li class="buttons">
+					<input type="hidden" name="form_id" value="670561" />
+					<input id="saveForm" class="button_text" type="submit" name="submit" value="Download" />
+				</li>
+			</ul>
+		</form>
+		<div id="footer">
+		</div>
+	</div>
+	<img id="bottom" src="bottom.png" alt="" />
+</body>
+</html>
