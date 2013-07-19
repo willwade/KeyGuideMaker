@@ -56,7 +56,7 @@ if ($_POST){
     print shell_exec($path);
 
     if (file_exists($fname)){
-        header('Content-disposition: attachment; filename=KeyGuide.svg');
+        header('Content-disposition: attachment; filename=KeyGuide'.$template.'.svg');
         header('Content-type: image/svg+xml');
         echo file_get_contents($fname);
         unlink($fname);

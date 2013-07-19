@@ -2,5 +2,5 @@
     <name>KeyBoard UK Landscape</name>
     <type>ipad</type>
     <case>fullscreen</case>
-    <image source="keyboard-uk-landscape.svg" position="60,53"/>
+    <image source="iPadkeyboard-uk-landscape.svg" position="60,53"/>
 </design>
