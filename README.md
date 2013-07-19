@@ -6,6 +6,11 @@ This is a collection of KeyGuide components. It includes:
 * [a web front end](html/)
 * [a directory of keyguide templates](/templates) and [a syntax for creating them (XML files with SVG)](/templates#readme)
 
+##Credits##
+
+Simon Judge and Will Wade wrote this with some testing and support from Marie.
+
+
 #KeyGuideMaker.py#
 
 This is a line command tool to combine multiple SVG elements into one. It allows for the most flexibility. 
@@ -55,7 +60,3 @@ For example: To make a keyguide of TouchChat-80 with a home button and some suck
     /KeyGuideMaker.py -t iPad -d "TouchChat-80,iPadHomeButton,iPadSuckers" -f TouchChatKeyGuide
     
 For a list of ready available components to add to your keyguide look at the [templates directory](templates/). 
-
-##Credits##
-
-Simon Judge and Will Wade wrote this with some testing and support from Marie.
