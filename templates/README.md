@@ -13,13 +13,13 @@ There are three types of files here in two broad categories:
 * Images are the "bits" for keyguards.
 * Each thing that can get added to a keyguard has to have a small XML file.  A xml file looks like this:
 
-    <design>
-        <name>GoTalk 16</name>
-        <type>ipad</type>
-        <case>fullscreen</case>
-        <image source="GoTalk-16.svg" position="60,90" id="GoTalk16"/>
-        <image source="GoTalk-Nav.svg" position="57,44" id="GoTalkNav"/>
-    </design>
+        <design>
+            <name>GoTalk 16</name>
+            <type>ipad</type>
+            <case>fullscreen</case>
+            <image source="GoTalk-16.svg" position="60,90" id="GoTalk16"/>
+            <image source="GoTalk-Nav.svg" position="57,44" id="GoTalkNav"/>
+        </design>
 
 Lets break this down..
 
@@ -41,10 +41,10 @@ Lets break this down..
 * position = x,y co-ordinates (from Top Left) where it should be placed
 * id = not needed but maybe useful in the future..
     
-    <image source="GoTalk-Nav.svg" position="57,44" id="GoTalkNav"/>
+        <image source="GoTalk-Nav.svg" position="57,44" id="GoTalkNav"/>
 - Note you can put multiple images in one design. 
     
-    </design>
+        </design>
 - You need this or horrible things will happen!
 
 ###Types###
@@ -52,11 +52,11 @@ Lets break this down..
 * Type Images start with "Type_" 
 * Each Type of device is described by a small xml file. It looks like this:
 
-    <type>
-        <name>iPad</name>
-        <width>238mm</width>
-        <height>182mm</height>
-        <image source="Type_iPadOutline.svg" position="0,0"/>
-    </type>
+        <type>
+            <name>iPad</name>
+            <width>238mm</width>
+            <height>182mm</height>
+            <image source="Type_iPadOutline.svg" position="0,0"/>
+        </type>
     
 Note the main thing is width and height. This will define the size of the image that gets finally composed. 
