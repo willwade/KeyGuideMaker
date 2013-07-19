@@ -27,7 +27,7 @@ Lets break this down..
      
 * You need this. Note the other type of xml file is for "Types"
 
-    <name>GoTalk 16</name>
+        <name>GoTalk 16</name>
 
 * What's the name of this file? What does it layout?
     
