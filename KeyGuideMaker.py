@@ -78,7 +78,10 @@ def createDesign(type, designs, filename="output", output="svg", formachine="epi
         os.remove(directory_name+'/stream.svg')
         os.removedirs(directory_name)
     else:
-        stackedLayout.save(__location__+'/'+filename+".svg")
+        if (filename.endswith('.svg')):
+            stackedLayout.save(filename)
+        else:
+            stackedLayout.save(filename+".svg")
     
 # to define values for comma sep list of values
 def csv(value):
@@ -89,7 +92,8 @@ parser = argparse.ArgumentParser(prog='KeyGuideMaker',description='Creates keygu
 parser.add_argument('--type','-t', type=str, default='ipad', help='What device are these for? iPad, iPadMini, Powerbox?')
 parser.add_argument('--designs','-d', type=csv, help='list the name of the designs you want to convert to a guide. NB: uses the filenames of the XML files')
 parser.add_argument('--output','-o', type=str, default="SVG", help='Not working. EPS, SVG, PDF, PS')      
-parser.add_argument('--filename','-f', type=str, default="output", help='Name of the final keyguide image that gets created')      
+parser.add_argument('--filename','-f', type=str, default="output", help='Name of the final keyguide image that gets created')
+parser.add_argument('--logfile','-l', type=str, default="", help='Logfile location. NB: If blank no log created')      
 parser.add_argument('--formachine','-m', type=str, default="epilog-mini", help='Not Working. Change the format of the file ready for a particular machine')      
 parser.add_argument('--version', action='version', version='%(prog)s 1.0', help='Get version number')
 # All the components of a Server request
@@ -98,5 +102,6 @@ args = parser.parse_args()
 #Fix the location if called elsewhere
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
 
-logging.basicConfig(filename='KeyGuideMaker.log',level=logging.DEBUG)
+if (args.logfile!=''):
+    logging.basicConfig(filename='KeyGuideMaker.log',level=logging.DEBUG)
 createDesign(args.type,args.designs,args.filename,args.output,args.formachine)
