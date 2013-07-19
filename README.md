@@ -6,6 +6,8 @@ This is a collection of KeyGuide components. It includes:
 * [a web front end](html/)
 * [a directory of keyguide templates](/templates) and [a syntax for creating them (XML files with SVG)](/templates#readme)
 
+We also have a directory of ready-compiled, ready-to-print designs that need no tool to get going with. (YET TO BE INCLUDED)
+
 ##Credits##
 
 Simon Judge and Will Wade wrote this with some testing and support from Marie.
