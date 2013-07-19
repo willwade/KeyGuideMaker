@@ -21,16 +21,19 @@ function get_random_string($valid_chars, $length)
 }
 
 if ($_POST){    
-    if($_POST['type']==1){
-    $type='iPad';
+    if ($_POST['type']==1){
+        $templates = 'iPad.csv';
+        $type = 'iPad';
     } elseif ($_POST['type']==2){
-    $type='iPadMini';
+        $templates = 'iPadMini.csv';
+        $type = 'iPadMini';
     } elseif ($_POST['type']==3){
-    $type='PowerBox';
+        $templates = 'Powerbox.csv';
+        $type = 'Powerbox';
     }
     // look up the template    
     $row=0;
-    if (($handle = fopen("iPad.csv", "r")) !== FALSE) {
+    if (($handle = fopen($templates, "r")) !== FALSE) {
         while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
             if($data[0]==$_POST['templates']){
                 $template=$data[2];

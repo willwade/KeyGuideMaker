@@ -1,0 +1,6 @@
+<design>
+    <name>ML</name>
+    <type>powerbox</type>
+    <case>fullscreen</case>
+    <image source="PowerBoxRandom.svg" position="60,53"/>
+</design>

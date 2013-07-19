@@ -14,7 +14,7 @@ if($_POST['id']){
     }
 
     $row=0;
-    if (($handle = fopen("iPad.csv", "r")) !== FALSE) {
+    if (($handle = fopen($templates, "r")) !== FALSE) {
         while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
             echo '<option value="'.$data[0].'">'.$data[1].'</option>';
             $row++;
