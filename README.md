@@ -62,3 +62,8 @@ For example: To make a keyguide of TouchChat-80 with a home button and some suck
     /KeyGuideMaker.py -t iPad -d "TouchChat-80,iPadHomeButton,iPadSuckers" -f TouchChatKeyGuide
     
 For a list of ready available components to add to your keyguide look at the [templates directory](templates/). 
+
+##Licence##
+
+![CC-A])(http://i.creativecommons.org/l/by/3.0/88x31.png)
+This is part of the Open Assistive Technology Initiative. That means it conforms to [CC-BY (Creative Commons Attribution)](http://creativecommons.org/licenses/by/3.0). 
