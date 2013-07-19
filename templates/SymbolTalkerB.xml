@@ -1,0 +1,6 @@
+<design>
+    <name>Grid - SymbolTalker B</name>
+    <type>ipad</type>
+    <case>fullscreen</case>
+    <image source="SymbolTalkerA.svg" position="60,90"/>
+</design>
