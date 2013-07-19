@@ -1,6 +1,14 @@
 #KeyGuideMaker#
 
-This is a collection of KeyGuide components - and a script to help make a keyguide. 
+This is a collection of KeyGuide components. It includes:
+
+* a line command tool (KeyGuideMaker.py) to help compose keyguides from a number of images (SVG files)
+* [a web front end](html/)
+* [a directory of keyguide templates](/templates) and [a syntax for creating them (XML files with SVG)](/templates#readme)
+
+#KeyGuideMaker.py#
+
+This is a line command tool to combine multiple SVG elements into one. It allows for the most flexibility. 
 
 ##Installation:##
 
