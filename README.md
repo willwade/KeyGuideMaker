@@ -65,5 +65,5 @@ For a list of ready available components to add to your keyguide look at the [te
 
 ##Licence##
 
-![CC-A])(http://i.creativecommons.org/l/by/3.0/88x31.png)
+![CC-A](http://i.creativecommons.org/l/by/3.0/88x31.png)
 This is part of the Open Assistive Technology Initiative. That means it conforms to [CC-BY (Creative Commons Attribution)](http://creativecommons.org/licenses/by/3.0). 
