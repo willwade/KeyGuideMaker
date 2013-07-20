@@ -47,7 +47,7 @@ def addLayout(design,images):
 
         img = sg.fromfile(__location__+'/templates/%s' % isource)
         iobj = img.getroot()
-        iobj.moveto(int(ipos[0]),int(ipos[1]))
+        iobj.moveto(ipos[0],ipos[1])
         images.append(iobj)
     return True
 
