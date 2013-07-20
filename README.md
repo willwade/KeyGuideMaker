@@ -22,7 +22,7 @@ This is a line command tool to combine multiple SVG elements into one. It allows
 * [Python](http://www.python.org/download/releases/2.7.2/)
 * [svg_utils](https://github.com/btel/svg_utils)
  
-In the future you may need some more things... but right now thats it!
+*NB: This develop branch is making use of this forked version of [svg_utils](https://github.com/willwade/svg_utils)*
 
 You may also want to use [InkScape](http://inkscape.org/) to do any little personal editing after the basic keyguide has been created (e.g. convert to PDF, EPS or change the line thickness for different laser cutting machines)
 
