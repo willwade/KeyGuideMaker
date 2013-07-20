@@ -2,6 +2,6 @@
     <name>GoTalk 16</name>
     <type>ipad</type>
     <case>fullscreen</case>
-    <image source="GoTalk-16.svg" position="60,90" id="GoTalk16"/>
-    <image source="GoTalk-Nav.svg" position="57,44" id="GoTalkNav"/>
+    <image source="GoTalk-16.svg" position="0,0" id="GoTalk16"/>
+    <image source="GoTalk-Nav.svg" position="0,0" id="GoTalkNav"/>
 </design>
