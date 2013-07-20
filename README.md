@@ -11,7 +11,7 @@ We also have a directory of ready-compiled, ready-to-print designs that need no 
 ##Credits##
 
 Simon Judge and Will Wade wrote this with some testing and support from Marie.
-
+Thanks to [Fablab Manchester](http://www.fablabmanchester.org) for helping to cut and trial Simon and Marie's designs.
 
 #KeyGuideMaker.py#
 
@@ -37,13 +37,15 @@ You may also want to use [InkScape](http://inkscape.org/) to do any little perso
     -t iPad -d "TouchChat-80,iPadHomeButton" -f will
 
     optional arguments:
-      -h, --help            show this help message and exit
+      -h, --help            
+                            show this help message and exit
       
-      --type TYPE, -t TYPE  What device are these for? iPad, iPadMini, Powerbox?
+      --type TYPE, -t TYPE  
+                            What device are these for? iPad, iPadMini, Powerbox?
       
       --designs DESIGNS, -d DESIGNS
-                            list the name of the designs you want to convert to a
-                            guide. NB: uses the filenames of the XML files
+                            list the name of the designs you want to convert to a guide.
+                              NB: uses the filenames of the XML files
       
       --output OUTPUT, -o OUTPUT
                             Not working. EPS, SVG, PDF, PS
@@ -52,14 +54,14 @@ You may also want to use [InkScape](http://inkscape.org/) to do any little perso
                             Name of the final keyguide image that gets created
       
       --formachine FORMACHINE, -m FORMACHINE
-                            Not Working. Change the format of the file ready for a
-                            particular machine
+                            Change the format of the file ready for a particular machine.
+                              e.g ponoko or razorlab need blue instead of black.
       
       --version             Get version number
       
-For example: To make a keyguide of TouchChat-80 with a home button and some suckers for attachment and called "TouchChatKeyGuide.svg":
+For example: To make a keyguide of TouchChat-80 with a home button and some suckers for attachment, called "TouchChatKeyGuide.svg" and ready it for [Ponoko](https://www.ponoko.com) (who use blue lines for cutting) use:
 
-    /KeyGuideMaker.py -t iPad -d "TouchChat-80,iPadHomeButton,iPadSuckers" -f TouchChatKeyGuide
+    ./KeyGuideMaker.py -t iPad -d "TouchChat-80,iPadHomeButton,iPadSuckers" -f TouchChatKeyGuide
     
 For a list of ready available components to add to your keyguide look at the [templates directory](templates/). 
 
