@@ -2,7 +2,7 @@
 
 This is a collection of KeyGuide components. It includes:
 
-* a line command tool (KeyGuideMaker.py) to help compose keyguides from a number of images (SVG files)
+* [a line command tool (KeyGuideMaker.py)](#keyguidemakerpy) to help compose keyguides from a number of images (SVG files)
 * [a web front end](html/) (you can see a live version of this [here](http://keyguides.sourceymonkey.com))
 * [a directory of keyguide templates](/templates) and [a syntax for creating them (XML files with SVG)](/templates#readme)
 
