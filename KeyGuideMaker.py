@@ -97,7 +97,7 @@ parser.add_argument('--designs','-d', type=csv, help='list the name of the desig
 parser.add_argument('--output','-o', type=str, default="SVG", help='Not working. EPS, SVG, PDF, PS')      
 parser.add_argument('--filename','-f', type=str, default="output", help='Name of the final keyguide image that gets created')
 parser.add_argument('--logfile','-l', type=str, default="", help='Logfile location. NB: If blank no log created')      
-parser.add_argument('--formachine','-m', type=str, default="epilog-mini", help='Change the format of the file ready for a particular machine')      
+parser.add_argument('--formachine','-m', type=str, default="epilog-mini", help='Change the format of the file ready for a particular machine. e.g ponoko or razorlab need blue instead of black. ')      
 parser.add_argument('--version', action='version', version='%(prog)s 1.0', help='Get version number')
 # All the components of a Server request
 args = parser.parse_args()
