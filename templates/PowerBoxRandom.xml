@@ -1,6 +1,6 @@
 <design>
     <name>RandomPowerbox</name>
-    <type>powerbox</type>
+    <type>Powerbox</type>
     <case>fullscreen</case>
     <image source="PowerBoxRandom.svg" position="57,44"/>
 </design>

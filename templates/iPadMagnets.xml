@@ -1,6 +1,6 @@
 <design>
-    <name>iPadMagnets</name>
-    <type>ipad</type>
+    <name>iPad magnet attachment holes</name>
+    <type>iPad</type>
     <case>fullscreen</case>
     <image source="iPadMagnets.svg" position="0,0"/>
 </design>

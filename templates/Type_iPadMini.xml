@@ -3,4 +3,5 @@
     <width>200mm</width>
     <height>134.7mm</height>
     <image source="Type_iPadMiniOutline.svg" position="0,0"/>
+    <optionals></optionals>
 </type>

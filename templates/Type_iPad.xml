@@ -3,4 +3,5 @@
     <width>238mm</width>
     <height>182mm</height>
     <image source="Type_iPadOutline.svg" position="0,0"/>
+    <optionals>iPadHomeButton,iPadMagnets,iPadSuckers</optionals>
 </type>

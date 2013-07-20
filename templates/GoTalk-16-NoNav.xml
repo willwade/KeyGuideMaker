@@ -1,7 +1,6 @@
 <design>
-    <name>GoTalk 16</name>
+    <name>GoTalk 16 (no navigation bar)</name>
     <type>iPad</type>
     <case>fullscreen</case>
     <image source="GoTalk-16.svg" position="0,0" id="GoTalk16"/>
-    <image source="GoTalk-Nav.svg" position="0,0" id="GoTalkNav"/>
 </design>

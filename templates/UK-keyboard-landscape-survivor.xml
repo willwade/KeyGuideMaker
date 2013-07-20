@@ -1,6 +1,6 @@
 <design>
     <name>KeyBoardUKLandscapeSurvivor</name>
-    <type>ipad</type>
+    <type>iPad</type>
     <case>survivor</case>
     <image source="keyboard-uk-landscape.svg" position="5,5"/>
 </design>

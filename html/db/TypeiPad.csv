@@ -1,9 +1,17 @@
-1,GoTalk-9,GoTalk-9
-2,GoTalk-16,GoTalk-16
-3,SpeakForYourself,SpeakForYourself
-4,Grid - SymbolTalker A,SymbolTalkerA
-5,Grid - SymbolTalker B,SymbolTalkerB
-6,TouchChat - 30 Location,TouchChat-30
-7,TouchChat - 42 Location,TouchChat-48
-8,TouchChat - 80 Location,TouchChat-80
-9,UK Keyboard Landscape,UK-keyboard-landscape-full
+id,desc,xml
+1,"TouchChat 80, Full screen with home button",example-full-config
+2,GoTalk 16 (no navigation bar),GoTalk-16-NoNav
+3,GoTalk 16,GoTalk-16
+4,GoTalk 9 (no navigation bar),GoTalk-9-NoNav
+5,GoTalk 9,GoTalk-9
+6,Hole for the home button,iPadHomeButton
+7,iPad magnet attachment holes,iPadMagnets
+8,4 sucker keyhole type cuts,iPadSuckers
+9,SpeakForYourself,SpeakForYourself
+10,Grid - SymbolTalker A,SymbolTalkerA
+11,Grid - SymbolTalker B,SymbolTalkerB
+12,TouchChat 30,TouchChat-30
+13,TouchChat 42,TouchChat-42
+14,TouchChat 80,TouchChat-80
+15,KeyBoard UK Landscape,UK-keyboard-landscape-full
+16,KeyBoardUKLandscapeSurvivor,UK-keyboard-landscape-survivor

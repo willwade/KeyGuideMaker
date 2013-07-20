@@ -13,11 +13,12 @@ if($_POST['id']){
        $templates = 'db/TypePowerbox.csv';
     }
 
-    $row=0;
+    $row=1;
     if (($handle = fopen($templates, "r")) !== FALSE) {
         while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-            echo '<option value="'.$data[0].'">'.$data[1].'</option>';
+            if($row == 1){ $row++; continue; }
             $row++;
+            echo '<option value="'.$data[0].'">'.$data[1].'</option>';
         }
         fclose($handle);
     }
