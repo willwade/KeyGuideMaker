@@ -6,11 +6,11 @@ if($_POST['id']){
     $id=$_POST['id'];
     
     if ($id==1){
-        $templates = 'iPad.csv';
+        $templates = 'db/TypeiPad.csv';
     } elseif ($id==2){
-        $templates = 'iPadMini.csv';
+        $templates = 'db/TypeiPadMini.csv';
     } elseif ($id==3){
-       $templates = 'Powerbox.csv';
+       $templates = 'db/TypePowerbox.csv';
     }
 
     $row=0;
