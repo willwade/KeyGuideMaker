@@ -8,6 +8,8 @@ This is a collection of KeyGuide components. It includes:
 
 We also have a directory of ready-compiled, ready-to-print designs that need no tool to get going with. (YET TO BE INCLUDED)
 
+If you want to make templates you will need to read this easy to read guide (YET TO BE WRITTEN! In short - take image, import into ai/inkscape. Resize to correct actual screen size. Draw boxes (0.01mm stroke), Export as SVG. Write brief XML file.)
+
 ##Credits##
 
 Simon Judge and Will Wade wrote this with some testing and support from Marie.
