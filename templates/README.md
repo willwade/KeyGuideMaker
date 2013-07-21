@@ -43,12 +43,10 @@ Lets break this down..
 
 * Name the image. Each image MUST have:
     - source = the name of the file (and must be SVG)
-    - position = x,y co-ordinates (from Top Left) where it should be placed. Note you can also use mm. e.g. 10mm,10mm would move it 10mm in and 10mm down. Neat huh? NB: Must have no spaces in between
+    - position = x,y co-ordinates (from Top Left) where it should be placed. This is in pixels (with no letters behind the numbers as above) or mm. e.g. 10mm,10mm would move it 10mm in and 10mm down. NB: Must have no spaces in between
     - id = not needed but maybe useful in the future..
 
-        <image source="GoTalk-Nav.svg" position="57,44" id="GoTalkNav"/>
-
-* Note you can put multiple images in one design. This is how you "stack" components into one. This means you can create a design with one or multiple elements. It allows for a heap of flexibility. 
+* Note you can put multiple images in one design (GoTalk-Nav.svg for example). This is how you "stack" components into one. This means you can create a design with one or multiple elements. It allows for a heap of flexibility. 
     
         </design>
 
