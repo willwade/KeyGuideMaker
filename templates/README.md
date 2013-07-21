@@ -23,35 +23,34 @@ There are three types of files here in two broad categories:
 
 Lets break this down..
 
-    <design>
+        <design>
      
 * You need this. Note the other type of xml file is for "Types"
 
-    <name>GoTalk 16</name>
+        <name>GoTalk 16</name>
 
 * What's the name of this file? What does it layout?
     
-    <type>iPad</type>
+        <type>iPad</type>
 
 * What was it designed for (relates to Type file) NB: Must be exactly the same as one of the types. This is case sensitive. 
     
-    <case>fullscreen</case>
+        <case>fullscreen</case>
 
 * Which case was it designed for? (NB: This isn't used as yet)
     
-    <image source="GoTalk-16.svg" position="60,90" id="GoTalk16"/>
+        <image source="GoTalk-16.svg" position="60,90" id="GoTalk16"/>
 
 * Name the image. Each image MUST have:
-    
-    * source = the name of the file (and must be SVG)
-    * position = x,y co-ordinates (from Top Left) where it should be placed. Note you can also use mm. e.g. 10mm,10mm would move it 10mm in and 10mm down. Neat huh? NB: Must have no spaces in between. 
-    * id = not needed but maybe useful in the future..
-    
-    <image source="GoTalk-Nav.svg" position="57,44" id="GoTalkNav"/>
+    - source = the name of the file (and must be SVG)
+    - position = x,y co-ordinates (from Top Left) where it should be placed. Note you can also use mm. e.g. 10mm,10mm would move it 10mm in and 10mm down. Neat huh? NB: Must have no spaces in between
+    - id = not needed but maybe useful in the future..
+
+        <image source="GoTalk-Nav.svg" position="57,44" id="GoTalkNav"/>
 
 * Note you can put multiple images in one design. This is how you "stack" components into one. This means you can create a design with one or multiple elements. It allows for a heap of flexibility. 
     
-    </design>
+        </design>
 
 * You need this final line or horrible things will happen!
 
