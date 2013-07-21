@@ -8,6 +8,8 @@ This is a collection of KeyGuide components. It includes:
 
 We also have a directory of ready-compiled, ready-to-print designs that need no tool to get going with. (YET TO BE INCLUDED)
 
+NB: [Some better documentation is available in the develop branch of this project](/tree/develop) (I'm just waiting on an update of svg_utils before I merge branches)
+
 ##Credits##
 
 Simon Judge and Will Wade wrote this with some testing and support from Marie.
