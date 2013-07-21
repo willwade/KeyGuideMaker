@@ -3,8 +3,8 @@
 This is a collection of KeyGuide components. It includes:
 
 * [a line command tool (KeyGuideMaker.py)](#keguidemakerpy) to help compose keyguides from a number of images (SVG files)
-* [a web front end](https://github.com/willwade/KeyGuideMaker/html/) (you can see a live version of this [here](http://keyguides.sourceymonkey.com))
-* [a directory of keyguide templates](https://github.com/willwade/KeyGuideMaker/templates) and [a syntax for creating them (XML files with SVG)](https://github.com/willwade/KeyGuideMaker/templates#readme)
+* [a web front end](html/) (you can see a live version of this [here](http://keyguides.sourceymonkey.com))
+* [a directory of keyguide templates](templates) and [a syntax for creating them (XML files with SVG)](templates#readme)
 
 We also have a directory of ready-compiled, ready-to-print designs that need no tool to get going with. (YET TO BE INCLUDED)
 
