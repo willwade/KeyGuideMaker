@@ -76,9 +76,9 @@ def createDesign(type, designs, filename="output", output="svg", formachine="epi
     stackedLayout.append(images)
     # save generated SVG files
     if (filename=='stream'):
-        print recolourforlab(stackedLayout.save_to_str(),formachine)
+        print recolourforlab(stackedLayout.to_str(),formachine)
     else:
-        data = recolourforlab(stackedLayout.save_to_str(),formachine)
+        data = recolourforlab(stackedLayout.to_str(),formachine)
         if not (filename.endswith('.svg')):
             filename = filename+'.svg'
         svg_file = open(filename, "wb")
