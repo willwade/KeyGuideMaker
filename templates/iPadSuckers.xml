@@ -1,6 +1,6 @@
 <design>
-    <name>iPadSuckers</name>
-    <type>ipad</type>
+    <name>4 sucker keyhole type cuts</name>
+    <type>iPad</type>
     <case>fullscreen</case>
     <image source="iPadSuckers.svg" position="0,0"/>
 </design>

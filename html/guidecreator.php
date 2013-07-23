@@ -20,15 +20,15 @@ function get_random_string($valid_chars, $length)
     return $random_string;
 }
 
-if ($_POST){    
+if ($_POST){      
     if ($_POST['type']==1){
-        $templates = 'iPad.csv';
+        $templates = 'db/TypeiPad.csv';
         $type = 'iPad';
     } elseif ($_POST['type']==2){
-        $templates = 'iPadMini.csv';
+        $templates = 'db/TypeiPadMini.csv';
         $type = 'iPadMini';
     } elseif ($_POST['type']==3){
-        $templates = 'Powerbox.csv';
+        $templates = 'db/TypePowerbox.csv';
         $type = 'Powerbox';
     }
     // look up the template    
@@ -56,8 +56,30 @@ if ($_POST){
     //Parse the script output
     $cmd='KeyGuideMaker.py -t '.$type.' -d '.'"'.$opts.'" -f '.$fname;
     $path = "/usr/bin/python ".realpath('../').'/'.$cmd;
-    print shell_exec($path);
-
+    shell_exec($path);
+    
+    # nb: to change the file format..
+    # nb nb: only works with imagemagick.. and the servers version hasn't got ruddy svg installed
+    /*
+    if($_POST['format']!='svg'){
+        $im = new Imagick();
+        $svg = file_get_contents($fname);
+        $im->readImageBlob($svg);
+        if($_POST['format']=='png'){
+            $im->setImageFormat("png24");
+        } elseif($_POST['format']=='jpeg') {
+            $im->setImageFormat("jpeg");
+        } elseif($_POST['format']=='pdf') {
+            $im->setImageFormat("pdf");
+        }
+        unlink($fname);
+        $fname = $fname.'.'.$_POST['format'];
+        $im->writeImage($fname.'.'.$_POST['format']);
+        $im->clear();
+        $im->destroy();
+    }
+    */
+    
     if (file_exists($fname)){
         header('Content-disposition: attachment; filename=KeyGuide'.$template.'.svg');
         header('Content-type: image/svg+xml');

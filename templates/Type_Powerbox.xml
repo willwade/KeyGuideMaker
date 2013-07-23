@@ -3,4 +3,5 @@
     <width>283mm</width>
     <height>183mm</height>
     <image source="Type_PowerboxOutline.svg" position="0,0"/>
+    <optionals></optionals>
 </type>

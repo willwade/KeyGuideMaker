@@ -1,3 +1,6 @@
+<?php
+// this file is used to generate the html page. It doesn't need to be super duper dynamic since the options for each type of device is rarely updated the ajax call is the only bit of php that will get called regularly
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -49,7 +52,7 @@ Make your keyguide you desire here! Please note that this is very very early bet
 			<ul>
 				<li id="li_1">
 					<label class="description" for="element_1">
-						Choose your device / Case combination
+						Choose your device
 					</label>
 					<div>
 						<select class="element select medium type" id="type" name="type">
@@ -92,27 +95,57 @@ Make your keyguide you desire here! Please note that this is very very early bet
 					<label class="description" for="element_2">
 						Choose options (if any)
 					</label>
-										<span class="options Type1">
-<input id="element_3" name="Opt_iPadHomeButton" class="element checkbox" type="checkbox" value="1" />
-<label class="choice" for="element_3">
-    Hole for the home button</label>
-<input id="element_4" name="Opt_iPadMagnets" class="element checkbox" type="checkbox" value="1" />
-<label class="choice" for="element_4">
-    iPad magnet attachment holes</label>
-<input id="element_5" name="Opt_iPadSuckers" class="element checkbox" type="checkbox" value="1" />
-<label class="choice" for="element_5">
-    4 sucker keyhole type cuts</label>
+					<?
+// yeah I'm lazy. deal with it
+$n=0;
+$types = array('iPad','iPadMini','Powerbox');
+foreach ($types as $type){
+$n++; 
+?>
+					<span class="options Type<?=$n?>">
+<?
+    if (file_exists('db/'.$type.'Options.csv')){     
+        $row = 1;
+        if (($handle = fopen('db/'.$type.'Options.csv', "r")) !== FALSE) {
+            while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+                if($row == 1){ $row++; continue; }
+                $row++;
+?>
+<input id="element_<?=$row?>" name="Opt_<?=$data[2]?>" class="element checkbox" type="checkbox" value="1" />
+<label class="choice" for="element_<?=$row?>">
+    <?=$data[1]?>
+</label>
+<?
+
+            }
+            fclose($handle);
+        }
+  }
+?>
 					</span>
-					<span class="options Type2">
-					</span>
-					<span class="options Type3">
-					</span>
+<?
+}
+?>
 				<p class="guidelines" id="guide_3"><small>Choose the options. Note this is particular to each device. If you are trying to find variants on each design see the dropdown. </small></p></li>
 				<li class="section_break">
 			<h3>Tips!</h3>
 			<p>Once downloaded you need to send this to your <a href="http://www.directplasticsonline.co.uk/">local laser printing service</a>, <a href="http://www.fablabmanchester.org/about-us/fab-lab-network">fablab</a> or your helpful AT company. <a href="http://www.fablabmanchester.org/about-us/fab-lab-network">fablab</a> is far cheaper, you'll meet some nice people and you'll learn something too! Note that guides work best between 2mm and 3mm thickness. 6mm is quite chunky and can be tricky with small cell apps. You may need to purchase some acrylic (for example <a href="http://www.directplasticsonline.co.uk/">these folks</a> sell it pretty cheaply in the UK). Card, leather and all sorts of other materials can be used. We only ask you <a href="javascript:void(0)" data-uv-lightbox="classic_widget" data-uv-mode="full" data-uv-primary-color="#cc6d00" data-uv-link-color="#007dbf" data-uv-default-mode="support" data-uv-forum-id="215520">feedback</a> your results to us so we can improve the designs!</p>
 		</li>
-				
+<?
+/*				
+				<li id="li_4" >
+		<label class="description" for="element_4">Choose your format </label>
+		<div>
+		<select class="element select medium" id="format" name="format"> 
+			<option value="" selected="selected"></option>
+<option value="svg" selected>SVG</option>
+<option value="pdf" >PDF</option>
+<option value="png" >PNG</option>
+<option value="jpeg" >JPEG</option>
+		</select>
+		</div><p class="guidelines" id="guide_4"><small>Note that SVG is editable. The rest aren't so easy to edit!</small></p> 
+		</li>
+*/ ?>				
 				<li class="buttons">
 					<input type="hidden" name="form_id" value="670561" />
 					<input id="saveForm" class="button_text" type="submit" name="submit" value="Download" />

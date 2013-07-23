@@ -1,6 +1,6 @@
 <design>
     <name>KeyBoard UK Landscape</name>
-    <type>ipad</type>
+    <type>iPad</type>
     <case>fullscreen</case>
     <image source="iPadkeyboard-uk-landscape.svg" position="60,53"/>
 </design>

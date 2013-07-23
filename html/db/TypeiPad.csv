@@ -1,0 +1,14 @@
+id,desc,xml
+1,"TouchChat 80, Full screen with home button",example-full-config
+2,GoTalk 16 (no navigation bar),GoTalk-16-NoNav
+3,GoTalk 16,GoTalk-16
+4,GoTalk 9 (no navigation bar),GoTalk-9-NoNav
+5,GoTalk 9,GoTalk-9
+6,SpeakForYourself,SpeakForYourself
+7,Grid - SymbolTalker A,SymbolTalkerA
+8,Grid - SymbolTalker B,SymbolTalkerB
+9,TouchChat 30,TouchChat-30
+10,TouchChat 42,TouchChat-42
+11,TouchChat 80,TouchChat-80
+12,KeyBoard UK Landscape,UK-keyboard-landscape-full
+13,KeyBoardUKLandscapeSurvivor,UK-keyboard-landscape-survivor

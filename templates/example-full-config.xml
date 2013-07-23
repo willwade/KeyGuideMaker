@@ -1,6 +1,6 @@
 <design>
     <name>TouchChat 80, Full screen with home button</name>
-    <type>ipad</type>
+    <type>iPad</type>
     <case>fullscreen</case>
     <layout>
         <position>626,233</position>

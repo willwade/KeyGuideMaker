@@ -1,6 +1,6 @@
 <design>
     <name>TouchChat 80</name>
-    <type>ipad</type>
+    <type>iPad</type>
     <case>fullscreen</case>
     <image source="touchchat-42.svg" position="60,90"/>
     <image source="touchchat-messagewin.svg" position="57,44"/>

@@ -47,10 +47,16 @@ def addLayout(design,images):
 
         img = sg.fromfile(__location__+'/templates/%s' % isource)
         iobj = img.getroot()
-        iobj.moveto(int(ipos[0]),int(ipos[1]))
+        iobj.moveto(ipos[0],ipos[1])
         images.append(iobj)
     return True
-    
+
+def recolourforlab(svg,formachine):
+    if formachine=='ponoko' or formachine=='razorlab':
+        return svg.replace('#000000','#0000FF')
+    else:
+        return svg
+
 def createDesign(type, designs, filename="output", output="svg", formachine="epilog-mini"):
     # Whats the type? Lets get the size and basic outline..
     
@@ -70,18 +76,15 @@ def createDesign(type, designs, filename="output", output="svg", formachine="epi
     stackedLayout.append(images)
     # save generated SVG files
     if (filename=='stream'):
-        import tempfile
-        directory_name = tempfile.mkdtemp()
-        stackedLayout.save(directory_name+'/stream.svg')
-        data = open(directory_name+'/stream.svg')
-        print data.read()
-        os.remove(directory_name+'/stream.svg')
-        os.removedirs(directory_name)
+        print recolourforlab(stackedLayout.save_to_str(),formachine)
     else:
-        if (filename.endswith('.svg')):
-            stackedLayout.save(filename)
-        else:
-            stackedLayout.save(filename+".svg")
+        data = recolourforlab(stackedLayout.save_to_str(),formachine)
+        if not (filename.endswith('.svg')):
+            filename = filename+'.svg'
+        svg_file = open(filename, "wb")
+        svg_file.write(data)
+        svg_file.close()        
+        
     
 # to define values for comma sep list of values
 def csv(value):
@@ -94,7 +97,7 @@ parser.add_argument('--designs','-d', type=csv, help='list the name of the desig
 parser.add_argument('--output','-o', type=str, default="SVG", help='Not working. EPS, SVG, PDF, PS')      
 parser.add_argument('--filename','-f', type=str, default="output", help='Name of the final keyguide image that gets created')
 parser.add_argument('--logfile','-l', type=str, default="", help='Logfile location. NB: If blank no log created')      
-parser.add_argument('--formachine','-m', type=str, default="epilog-mini", help='Not Working. Change the format of the file ready for a particular machine')      
+parser.add_argument('--formachine','-m', type=str, default="epilog-mini", help='Change the format of the file ready for a particular machine. e.g ponoko or razorlab need blue instead of black.')      
 parser.add_argument('--version', action='version', version='%(prog)s 1.0', help='Get version number')
 # All the components of a Server request
 args = parser.parse_args()
