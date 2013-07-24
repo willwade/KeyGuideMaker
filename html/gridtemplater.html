@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Grid Templater</title>
+<link rel="stylesheet" type="text/css" href="view.css" media="all">
+<script type="text/javascript" src="view.js"></script>
+
+</head>
+<body id="main_body" >
+	
+	<img id="top" src="top.png" alt="">
+	<div id="form_container">
+	
+		<h1><a>Grid Templater</a></h1>
+		<form id="form_674308" class="appnitro"  method="post" action="gridtemplater.php">
+					<div class="form_description">
+			<h2>Grid Templater</h2>
+			<p>This allows you to quickly make the elements of a Grid layout - based on some basic settings</p>
+		</div>						
+			<ul >
+					<li id="li_1" >
+		<label class="description" for="element_1">Number of cells across </label>
+		<div>
+			<input id="element_1" name="cellwidth" class="element text small" type="text" maxlength="3" value="7"/> 
+		</div><p class="guidelines" id="guide_1"><small>How many cells across is your grid?</small></p> 
+		</li>		<li id="li_2" >
+		<label class="description" for="element_2">Number of cells down </label>
+		<div>
+			<input id="element_2" name="cellheight" class="element text small" type="text" maxlength="3" value="5"/> 
+		</div><p class="guidelines" id="guide_2"><small>How many cells down is your grid?</small></p> 
+		</li>		<li id="li_4" >
+		<label class="description" for="element_4">Window Width (mm) </label>
+		<div>
+			<input id="element_4" name="winwidth" class="element text small" type="text" maxlength="255" value="198"/> 
+		</div><p class="guidelines" id="guide_4"><small>Whats the size of the window width n mm? NB: default settings is for the iPad</small></p> 
+		</li>		<li id="li_3" >
+		<label class="description" for="element_3">Window Height (mm) </label>
+		<div>
+			<input id="element_3" name="winhight" class="element text small" type="text" maxlength="255" value="148"/> 
+		</div><p class="guidelines" id="guide_3"><small>Whats the size of the window height in mm? NB: default settings is for the iPad</small></p> 
+		</li>		<li id="li_5" >
+		<label class="description" for="element_5">Cell spacing (in mm) </label>
+		<div>
+			<input id="element_5" name="cellspacing" class="element text small" type="text" maxlength="255" value="1.705"/> 
+		</div><p class="guidelines" id="guide_5"><small>Get a ruler(!) and measure in mm the space between the outer edge of one cell and another (NB: Don't measure the border!)</small></p> 
+		</li>
+			
+					<li class="buttons">
+			    <input type="hidden" name="form_id" value="674308" />
+			    
+				<input id="saveForm" class="button_text" type="submit" name="submit" value="Submit" />
+		</li>
+			</ul>
+		</form>	
+		<div id="footer">
+			
+		</div>
+	</div>
+	<img id="bottom" src="bottom.png" alt="">
+	</body>
+</html>
