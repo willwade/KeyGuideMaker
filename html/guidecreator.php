@@ -1,4 +1,13 @@
 <?php
+
+ini_set('error_reporting', E_ALL);
+ini_set ( "display_errors", "1");
+ini_set ( "display_startup_errors", "1");
+ini_set ( "html_errors", "1");
+ini_set ( "docref_root", "http://www.php.net/");
+ini_set ( "error_prepend_string", "<div style='color:red; font-family:verdana; border:1px solid red; padding:5px;'>");
+ini_set ( "error_append_string", "</div>");
+
 function get_random_string($valid_chars, $length)
 {
     // start with an empty random string
@@ -49,46 +58,46 @@ if ($_POST){
             $opts.= substr($itemk,4,strlen($itemk)).',';
         }
     }
+    #change the colour?
+    
+    
     //lazy approach to strip last comma
     $opts = substr($opts, 0, -1);
-    
+    # now do the stacking. NB: always svg
     $fname = realpath('createddesigns/').'/'.get_random_string('abcdefghijklmnopqrstuvwxyz018', 6).'-guide.svg';    
     //Parse the script output
-    $cmd='KeyGuideMaker.py -t '.$type.' -d '.'"'.$opts.'" -f '.$fname;
+    $cmd='KeyGuideMaker.py -t '.$type.' -d '.'"'.$opts.'" -f '.$fname.' -m'.$_POST['formachine'];
     $path = "/usr/bin/python ".realpath('../').'/'.$cmd;
     shell_exec($path);
     
     # nb: to change the file format..
     # nb nb: only works with imagemagick.. and the servers version hasn't got ruddy svg installed
-    /*
     if($_POST['format']!='svg'){
-        $im = new Imagick();
-        $svg = file_get_contents($fname);
-        $im->readImageBlob($svg);
-        if($_POST['format']=='png'){
-            $im->setImageFormat("png24");
-        } elseif($_POST['format']=='jpeg') {
-            $im->setImageFormat("jpeg");
-        } elseif($_POST['format']=='pdf') {
-            $im->setImageFormat("pdf");
-        }
-        unlink($fname);
-        $fname = $fname.'.'.$_POST['format'];
-        $im->writeImage($fname.'.'.$_POST['format']);
-        $im->clear();
-        $im->destroy();
+        $fnamebeforesvg = substr($fname,0,-4);
+        $convertcmd = '/usr/bin/convert '.$fname.' '.$fnamebeforesvg.'.'.$_POST['format'];
+        shell_exec($convertcmd);
+        $fname = $fnamebeforesvg.'.'.$_POST['format'];
+        unlink($fnamebeforesvg.'.svg');
     }
-    */
     
     if (file_exists($fname)){
-        header('Content-disposition: attachment; filename=KeyGuide'.$template.'.svg');
-        header('Content-type: image/svg+xml');
+        header('Content-disposition: attachment; filename=KeyGuide-'.$template.'.'.$_POST['format']);
+        if ($_POST['format']=='svg'){
+            header('Content-type: image/svg+xml');
+        } elseif($_POST['format']=='jpg'){
+            header('Content-Type: image/jpeg');
+        } elseif($_POST['format']=='png'){
+            header('Content-Type: image/png');
+        } elseif($_POST['format']=='pdf') {
+            header('Content-Type: application/pdf');
+        }
         echo file_get_contents($fname);
         unlink($fname);
         exit();
     } else {
         echo "Sorry. Something went wrong\n<br \>";
-        echo $path;
+        echo "fname:".$fname."<br/>";
+        echo "convertcmd:".$convertcmd."<br/>";
     }
 }
 ?>

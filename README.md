@@ -12,7 +12,7 @@ If you want to make templates you will need to read this easy to read guide (YET
 
 ##Credits##
 
-Simon Judge and Will Wade wrote this with some testing and support from Marie.
+Simon Judge and Will Wade wrote this with some testing and support from Marie and original designs by [Chris](http://christopherjbarr.weebly.com/).
 Thanks to [Fablab Manchester](http://www.fablabmanchester.org) for helping to cut and trial Simon and Marie's designs.
 
 #KeyGuideMaker.py#
@@ -67,7 +67,7 @@ You may also want to use [InkScape](http://inkscape.org/) to do any little perso
       
 For example: To make a keyguide of TouchChat-80 with a home button and some suckers for attachment, called "TouchChatKeyGuide.svg" and ready it for [Ponoko](https://www.ponoko.com) (who use blue lines for cutting) use:
 
-    ./KeyGuideMaker.py -t iPad -d "TouchChat-80,iPadHomeButton,iPadSuckers" -f TouchChatKeyGuide
+    ./KeyGuideMaker.py -t iPad -d "TouchChat-80,iPadHomeButton,iPadSuckers"  -m ponoko -f TouchChatKeyGuide
     
 For a list of ready available components to add to your keyguide look at the [templates directory](templates/). 
 
