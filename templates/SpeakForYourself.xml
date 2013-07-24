@@ -2,5 +2,5 @@
     <name>SpeakForYourself</name>
     <type>iPad</type>
     <case>fullscreen</case>
-    <image source="speakforyourself.svg" position="0,0"/>
+    <image source="SpeakForYourself.svg" position="0,0"/>
 </design>
