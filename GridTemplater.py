@@ -44,13 +44,15 @@ def createGrid(w,h,cellspacing,x,y,linewidth,fname='output',linecurved=True):
     # lets work out all the x, y points for each cell.
     # sure there is a better way of doing this
     colpos = list()
+#    colpos.append(cellspacing)
     rowpos = list()
+#    rowpos.append(cellspacing)
     for l in (range(x)):
-        startdrawx= (cellwidth+cellspacing)*l
+        startdrawx= ((cellwidth+cellspacing)*l)+cellspacing
         colpos.append(startdrawx)
 
     for h in (range(y)):
-        startdrawy= (cellheight+cellspacing)*h
+        startdrawy= ((cellheight+cellspacing)*h)+cellspacing
         rowpos.append(startdrawy)
 
     for x in colpos:

@@ -71,10 +71,11 @@ if ($_POST){
     shell_exec($path);
     
     # nb: to change the file format..
-    # nb nb: only works with imagemagick.. and the servers version hasn't got ruddy svg installed
+    # nb nb: only works with uniconvertor.. and the servers version hasn't got ruddy svg installed
+    # install with sudo apt-get install python-uniconvertor
     if($_POST['format']!='svg'){
         $fnamebeforesvg = substr($fname,0,-4);
-        $convertcmd = '/usr/bin/convert '.$fname.' '.$fnamebeforesvg.'.'.$_POST['format'];
+        $convertcmd = '/usr/bin/uniconvertor '.$fname.' '.$fnamebeforesvg.'.'.$_POST['format'];
         shell_exec($convertcmd);
         $fname = $fnamebeforesvg.'.'.$_POST['format'];
         unlink($fnamebeforesvg.'.svg');
@@ -84,10 +85,12 @@ if ($_POST){
         header('Content-disposition: attachment; filename=KeyGuide-'.$template.'.'.$_POST['format']);
         if ($_POST['format']=='svg'){
             header('Content-type: image/svg+xml');
-        } elseif($_POST['format']=='jpg'){
-            header('Content-Type: image/jpeg');
-        } elseif($_POST['format']=='png'){
-            header('Content-Type: image/png');
+        } elseif($_POST['format']=='ai'){
+            header('Content-Type: application/postscript');
+        } elseif($_POST['format']=='wmf'){
+            header('Content-Type: image/wmf');
+        } elseif($_POST['format']=='ps'){
+            header('Content-Type: application/postscript');
         } elseif($_POST['format']=='pdf') {
             header('Content-Type: application/pdf');
         }
@@ -96,6 +99,7 @@ if ($_POST){
         exit();
     } else {
         echo "Sorry. Something went wrong\n<br \>";
+        print_r($_POST);
         echo "fname:".$fname."<br/>";
         echo "convertcmd:".$convertcmd."<br/>";
     }

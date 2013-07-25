@@ -33,32 +33,39 @@ if ($_POST){
 
 #./GridCreator.py --cellwidth 7 --cellheight 5 --winwidth 198 --winhight 148 --cellspacing 1.705"
     $cmd = 'GridTemplater.py ';
-    if (is_int($_POST['cellwidth'])){
-        $cmd.='--cellwidth '.$_POST['cellwidth'].' ';
+    $cellwidth = filter_input(INPUT_POST, "cellwidth", FILTER_VALIDATE_INT);
+    $cellheight = filter_input(INPUT_POST, "cellheight", FILTER_VALIDATE_INT);
+    $winhight = filter_input(INPUT_POST, "winhight", FILTER_VALIDATE_INT);
+    $winwidth = filter_input(INPUT_POST, "winwidth", FILTER_VALIDATE_INT);
+    $cellspacing = filter_input(INPUT_POST, "cellspacing", FILTER_VALIDATE_FLOAT);
+
+    if (is_int($cellwidth)){
+        $cmd.='--cellwidth '.$cellwidth.' ';
     } 
     
-    if (is_int($_POST['cellheight'])){
-        $cmd.='--cellheight '.$_POST['cellheight'].' ';
+    if (is_int($cellheight)){
+        $cmd.='--cellheight '.$cellheight.' ';
     } 
 
-    if (is_int($_POST['winhight'])){
-        $cmd.='--winheight '.$_POST['winhight'].' ';
+    if (is_int($winhight)){
+        $cmd.='--winheight '.$winhight.' ';
     } 
 
-    if (is_int($_POST['winwidth'])){
-        $cmd.='--winwidth '.$_POST['winwidth'].' ';
+    if (is_int($winwidth)){
+        $cmd.='--winwidth '.$winwidth.' ';
     } 
 
-    if (is_int($_POST['cellspacing'])){
-        $cmd.='--cellspacing '.$_POST['cellspacing'].' ';
+    if (is_numeric($cellspacing)){
+        $cmd.='--cellspacing '.$cellspacing.' ';
     } 
     
     $fname = realpath('createddesigns/').'/'.get_random_string('abcdefghijklmnopqrstuvwxyz018', 6).'-template';    
     //Parse the script output
     $cmd.= '-f '.$fname;
     $path = "/usr/bin/python ".realpath('../').'/'.$cmd;
+#    $path = "/usr/lib/python2.7/bin/python ".realpath('../').'/'.$cmd;
     shell_exec($path);
-    
+        
     
     if (file_exists($fname.'.svg')){
         header('Content-disposition: attachment; filename=KeyGuideTemplate.svg');

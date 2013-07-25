@@ -46,8 +46,8 @@
 					KeyGuide Creator
 				</h2>
 				<p>
-Make your keyguide you desire here! Please note that this is very very early beta. Lots of things aren't working! If you are interested in playing around with this more take a look at <a href="https://github.com/willwade/KeyGuideMaker">KeyGuideMaker on GitHub</a> which provides a line command tool to make your own keyguide. Credit for this tool goes to
-<a href="https://twitter.com/si_judge">@si_judge</a> and <a href="https://twitter.com/willwade">@willwade</a> and its all under a <a href="https://github.com/willwade/KeyGuideMaker#licence">CC-A licence</a>				</p>
+Make your keyguide you desire here! Please note that this is very very early beta. Lots of things aren't working! If you are interested in playing around with this more take a look at <a href="https://github.com/willwade/KeyGuideMaker">the github project page</a> which provides a line command tool to make your own keyguide. <br /><br />If you want to try creating just a basic grid of cells for laser cutting try using <a href="gridtemplater.html">the GridTemplater tool</a>. <br /><br />Credit for these tools go to
+<a href="https://twitter.com/si_judge">Simon</a>, <a href="http://christopherjbarr.weebly.com/">Chris</a> and <a href="https://twitter.com/willwade">Will</a> and its all under a <a href="https://github.com/willwade/KeyGuideMaker#licence">CC-A licence</a>				</p>
 			</div>
 			<ul>
 				<li id="li_1">
@@ -162,7 +162,7 @@ $n++;
 
 				<li class="section_break">
 			<h3>Tips!</h3>
-			<p>Once downloaded you need to send this to your <a href="http://www.directplasticsonline.co.uk/">local laser printing service</a>, <a href="http://www.fablabmanchester.org/about-us/fab-lab-network">fablab</a> or your helpful AT company. <a href="http://www.fablabmanchester.org/about-us/fab-lab-network">fablab</a> is far cheaper, you'll meet some nice people and you'll learn something too! Note that guides work best between 2mm and 3mm thickness. 6mm is quite chunky and can be tricky with small cell apps. You may need to purchase some acrylic (for example <a href="http://www.directplasticsonline.co.uk/">these folks</a> sell it pretty cheaply in the UK). Card, leather and all sorts of other materials can be used. We only ask you <a href="javascript:void(0)" data-uv-lightbox="classic_widget" data-uv-mode="full" data-uv-primary-color="#cc6d00" data-uv-link-color="#007dbf" data-uv-default-mode="support" data-uv-forum-id="215520">feedback</a> your results to us so we can improve the designs!</p>
+			<p>Once downloaded you need to send this to your <a href="http://www.directplasticsonline.co.uk/">local laser printing service</a>, <a href="http://www.fablabmanchester.org/about-us/fab-lab-network">fablab</a> or your helpful AT company. Note that guides work best between 2mm and 3mm thickness. 6mm is quite chunky and can be tricky with small cell apps. You may need to purchase some acrylic (for example <a href="http://www.directplasticsonline.co.uk/">these folks</a> sell it pretty cheaply in the UK). Card, leather and all sorts of other materials can be used. We only ask you <a href="javascript:void(0)" data-uv-lightbox="classic_widget" data-uv-mode="full" data-uv-primary-color="#cc6d00" data-uv-link-color="#007dbf" data-uv-default-mode="support" data-uv-forum-id="215520">feedback</a> your results to us so we can improve the designs!</p>
 		</li>
 <?
 /*				
