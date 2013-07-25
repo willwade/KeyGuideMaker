@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Keyguidemaker by willwade</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Keyguidemaker</h1>
+        <p class="header">KeyGuardMaker</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/willwade/KeyGuideMaker/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/willwade/KeyGuideMaker/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/willwade/KeyGuideMaker">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/willwade">willwade</a></p>
+
+
+      </header>
+      <section>
+        <h1>
+<a name="keyguidemaker" class="anchor" href="#keyguidemaker"><span class="octicon octicon-link"></span></a>KeyGuideMaker</h1>
+
+<p>This is a collection of KeyGuide components. It includes:</p>
+
+<ul>
+<li>
+<a href="/#keyguidemakerpy">a line command tool</a> (KeyGuideMaker.py) - see info below on this</li>
+<li>
+<a href="html/">a web front end</a> (you can see a live version of this <a href="http://keyguides.sourceymonkey.com">here</a>)</li>
+<li>
+<a href="/templates">a directory of keyguide templates</a> and <a href="/templates#readme">a syntax for creating them (XML files with SVG)</a>
+</li>
+</ul><p>We also have a directory of ready-compiled, ready-to-print designs that need no tool to get going with. (YET TO BE INCLUDED)</p>
+
+<p>If you want to make templates you will need to read this easy to read guide (YET TO BE WRITTEN! In short - take image, import into ai/inkscape. Resize to correct actual screen size. Draw boxes (0.01mm stroke), Export as SVG. Write brief XML file.)</p>
+
+<h2>
+<a name="credits" class="anchor" href="#credits"><span class="octicon octicon-link"></span></a>Credits</h2>
+
+<p>Simon Judge and Will Wade wrote this with some testing and support from Marie and original designs by <a href="http://christopherjbarr.weebly.com/">Chris</a>.
+Thanks to <a href="http://www.fablabmanchester.org">Fablab Manchester</a> for helping to cut and trial Simon and Marie's designs.</p>
+
+<h1>
+<a name="keyguidemakerpy" class="anchor" href="#keyguidemakerpy"><span class="octicon octicon-link"></span></a>KeyGuideMaker.py</h1>
+
+<p>This is a line command tool to combine multiple SVG elements into one. It allows for the most flexibility. </p>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation:</h2>
+
+<ul>
+<li><a href="http://www.python.org/download/releases/2.7.2/">Python</a></li>
+<li><a href="https://github.com/btel/svg_utils">svg_utils</a></li>
+</ul><p>If you want to develop the web front end you will also want to install the line command tools of <a href="http://www.imagemagick.org/script/index.php">imagemagick</a> </p>
+
+<pre><code>sudo apt-get install imagemagick 
+</code></pre>
+
+<p>should do the trick. This will allow the conversion of the final image to other formats. </p>
+
+<p>You may also want to use <a href="http://inkscape.org/">InkScape</a> to do any little personal editing after the basic keyguide has been created (e.g. convert to PDF, EPS or change the line thickness for different laser cutting machines)</p>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<pre><code>/KeyGuideMaker.py -h
+usage: KeyGuideMaker [-h] [--type TYPE] [--designs DESIGNS] [--output OUTPUT]
+                     [--filename FILENAME] [--formachine FORMACHINE]
+                     [--version]
+
+Creates keyguides from xml design files and svgs. Use like: /KeyGuideMaker.py
+-t iPad -d "TouchChat-80,iPadHomeButton" -f will
+
+optional arguments:
+  -h, --help            
+                        show this help message and exit
+
+  --type TYPE, -t TYPE  
+                        What device are these for? iPad, iPadMini, Powerbox?
+
+  --designs DESIGNS, -d DESIGNS
+                        list the name of the designs you want to convert to a guide.
+                          NB: uses the filenames of the XML files
+
+  --output OUTPUT, -o OUTPUT
+                        Not working. EPS, SVG, PDF, PS
+
+  --filename FILENAME, -f FILENAME
+                        Name of the final keyguide image that gets created
+
+  --formachine FORMACHINE, -m FORMACHINE
+                        Change the format of the file ready for a particular machine.
+                          e.g ponoko or razorlab need blue instead of black.
+
+  --version             Get version number
+</code></pre>
+
+<p>For example: To make a keyguide of TouchChat-80 with a home button and some suckers for attachment, called "TouchChatKeyGuide.svg" and ready it for <a href="https://www.ponoko.com">Ponoko</a> (who use blue lines for cutting) use:</p>
+
+<pre><code>./KeyGuideMaker.py -t iPad -d "TouchChat-80,iPadHomeButton,iPadSuckers"  -m ponoko -f TouchChatKeyGuide
+</code></pre>
+
+<p>For a list of ready available components to add to your keyguide look at the <a href="templates/">templates directory</a>. </p>
+
+<h2>
+<a name="licence" class="anchor" href="#licence"><span class="octicon octicon-link"></span></a>Licence</h2>
+
+<p><img src="http://i.creativecommons.org/l/by/3.0/88x31.png" alt="CC-A">
+This is part of the Open Assistive Technology Initiative. That means it conforms to <a href="http://creativecommons.org/licenses/by/3.0">CC-BY (Creative Commons Attribution)</a>. </p>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
+  </body>
+</html>
