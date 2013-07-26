@@ -22,12 +22,10 @@ try:
 except ImportError:
     import xml.etree.ElementTree as ET
 
-def convertpxtomm(mm,dpi):
-     #NB: To calculate screen size: width_in_inches= Screen.width / Screen.dpi; height_in_inches= Screen.height / Screen.dpi
+def convertpxtomm(pixels,dpi):
      #first convert mm to inch
-     inchw = (mm*0.0393700787)
-     converted = (inchw/dpi)/0.0393700787
-     return converted
+     spixels_mm=(pixels*25.4)/dpi
+     return spixels_mm
 
 def createGrid(w,h,cellspacing,x,y,linewidth,fname='output',linecurved=True):
     # ok lets do some math!
@@ -35,8 +33,9 @@ def createGrid(w,h,cellspacing,x,y,linewidth,fname='output',linecurved=True):
     #cellspacing = convertpxtomm(8,264)
     # line width of the laser cutter
     linewidth = 0.01
-    cellwidth = ((w-(cellspacing*x))/x)
-    cellheight = ((h-(cellspacing*y))/y)
+    cellspacing_mm = convertpxtomm(cellspacing,132)
+    cellwidth = ((w-(cellspacing_mm*x))/x)
+    cellheight = ((h-(cellspacing_mm*y))/y)
     #print 'cellspacing', cellspacing, 'width', cellwidth, 'height', cellheight
     #nb: cellspacing is pixels - but needs to be coonverted
     
@@ -48,11 +47,11 @@ def createGrid(w,h,cellspacing,x,y,linewidth,fname='output',linecurved=True):
     rowpos = list()
 #    rowpos.append(cellspacing)
     for l in (range(x)):
-        startdrawx= ((cellwidth+cellspacing)*l)+cellspacing
+        startdrawx= ((cellwidth+cellspacing_mm)*l)+cellspacing_mm
         colpos.append(startdrawx)
 
     for h in (range(y)):
-        startdrawy= ((cellheight+cellspacing)*h)+cellspacing
+        startdrawy= ((cellheight+cellspacing_mm)*h)+cellspacing_mm
         rowpos.append(startdrawy)
 
     for x in colpos:
@@ -75,7 +74,7 @@ parser.add_argument('--cellwidth', type=int, default=7, help='The number of cell
 parser.add_argument('--cellheight', type=int, default=5, help='The number of cells up')
 parser.add_argument('--winwidth', type=int, default=198, help='The width of the aperture (window) in mm')
 parser.add_argument('--winheight', type=int, default=148, help='The height of the aperture (window) in mm')
-parser.add_argument('--cellspacing','-s', type=float, default=1.705, help='Cell Spacing (in mm)')
+parser.add_argument('--cellspacing','-s', type=float, default=8, help='Cell Spacing (in pixels)')
 parser.add_argument('--linewidth', type=float, default=0.01, help='Width of the lines to draw (in mm)')
 parser.add_argument('--filename','-f', type=str, default="output", help='Name of the final  image that gets created')
 parser.add_argument('--logfile','-l', type=str, default="", help='Logfile location. NB: If blank no log created')      

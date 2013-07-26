@@ -2,6 +2,7 @@
     <name>iPad</name>
     <width>238mm</width>
     <height>182mm</height>
+    <dpi>264</dpi>
     <image source="Type_iPadOutline.svg" position="0,0"/>
     <optionals>iPadHomeButton,iPadMagnets,iPadSuckers</optionals>
 </type>
