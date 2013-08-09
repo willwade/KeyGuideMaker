@@ -5,6 +5,8 @@
     <winwidth>198</winwidth>
     <winheight>148</winheight>
     <dpi>132</dpi>
+    <winxpos>60</winxpos>
+    <winypos>90</winypos>
     <image source="Type_iPadOutline.svg" position="0,0"/>
     <optionals>iPadHomeButton,iPadMagnets,iPadSuckers</optionals>
 </type>

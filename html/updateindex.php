@@ -11,26 +11,47 @@
 		<link rel="stylesheet" type="text/css" href="view.css" media="all" />
         <script type="text/javascript" src="view.js"></script> 
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-        <script type="text/javascript">
-        $(document).ready(function(){
-            $('.options').hide();
-            $(".type").change(function(){
-                var id=$(this).val();
-                var dataString = 'id='+ id;
-                $.ajax({
-                    type: "POST",
-                    url: "ajax_templates.php",
-                    data: dataString,
-                    cache: false,
-                    success: function(html){
-                        $(".templates").html(html);
-                        $('.options').hide();
-                        $('.Type'+id).show();
-                        } 
-                });
-            });
+
+<script type="text/javascript">
+function evaluate(){
+    var item = $(this);
+    var relatedItem = $("#" + item.attr("data-related-item")).parent();
+    if(item.is(":checked")){
+        relatedItem.fadeIn();
+    }else{
+        relatedItem.fadeOut();   
+    }
+}
+
+$(document).ready(function(){
+    $('input[type="checkbox"]').click(evaluate).each(evaluate);
+    $('.options').hide();
+    $(".type").change(function(){
+        var id=$(this).val();
+        var dataString = 'id='+ id;
+        $.ajax({
+            type: "POST",
+            url: "ajax_templates.php",
+            data: dataString,
+            cache: true,
+            success: function(html){
+                $(".templates").html(html);
+                $('.options').hide();
+                $('.Type'+id).show();
+                } 
         });
-        </script>
+        $.ajax({
+            type: "POST",
+            url: "ajax_typedets.php",
+            data: dataString,
+            cache: true,
+            success: function(html){
+                $(".templates").html(html);
+                } 
+        });
+    });
+});       
+</script>
 </head>
 <body id="main_body">
 	<img id="top" src="top.png" alt="">
@@ -40,7 +61,7 @@
 				Keyguide creator!
 			</a>
 		</h1>
-		<form id="form_670561" class="appnitro" method="post" action="guidecreator.php">
+		<form id="form_670561" class="appnitro" method="post" action="guidecreator.php" enctype='multipart/form-data'>
 			<div class="form_description">
 				<h2>
 					KeyGuide Creator
@@ -52,7 +73,7 @@ Make your keyguide you desire here! Please note that this is very very early bet
 			<ul>
 				<li id="li_1">
 					<label class="description" for="element_1">
-						Choose your device
+						Choose your device (& options if any)
 					</label>
 					<div>
 						<select class="element select medium type" id="type" name="type">
@@ -68,34 +89,8 @@ Make your keyguide you desire here! Please note that this is very very early bet
 								Powerbox
 							</option>
 						</select>
-					</div>
-					<p class="guidelines" id="guide_1">
-						<small>
-							Choose the device you need a guide for
-						</small>
-					</p>
-				</li>
-				<li id="li_2">
-					<label class="description" for="element_1">
-						Choose your app 
-					</label>
-					<div>					
-						<select class="element select medium templates" id="element_1" name="templates">
-							<option value="" selected="selected">
-							</option>
-						</select>
-					</div>
-					<p class="guidelines" id="guide_1">
-						<small>
-							Choose the app - or keyguard layout you need
-						</small>
-					</p>
-				</li>
-				<li id="li_3">
-					<label class="description" for="element_2">
-						Choose options (if any)
-					</label>
-					<?
+					
+											<?
 // yeah I'm lazy. deal with it
 $n=0;
 $types = array('iPad','iPadMini','Powerbox');
@@ -126,6 +121,44 @@ $n++;
 <?
 }
 ?>
+
+					</div>
+					<p class="guidelines" id="guide_1">
+						<small>
+							Choose the device you need a guide for
+						</small>
+					</p>
+				</li>
+				<li id="li_2">
+					<label class="description" for="element_1">
+						Choose your app 
+					</label>
+					<div>					
+						<select class="element select medium templates" id="element_1" name="templates">
+							<option value="" selected="selected">
+							</option>
+						</select>
+					</div>
+					<p class="guidelines" id="guide_1">
+						<small>
+							Choose the app - or keyguard layout you need
+						</small>
+					</p>
+				</li>
+                <li id="li_3">
+					<label class="description" for="element_file">
+						<input type="checkbox" data-related-item="element_file" name="usefile" id="usefile" value="1"/> Upload a template element to overlay? 
+					</label>
+					<div class="hidden">
+						<input id="element_file" name="file" class="element file" type="file"/> <br />
+						x: <input type="text" size="5"  maxlength="5" name="xpos" id="xpos" value="60"/>  y: <input type="text" size="5" name="ypos" id="ypos" maxlength="5" value="90"/><br />(from top left. NB: enter Nmm otherwise assumes pixels) 
+					</div>
+					<p class="guidelines" id="guide_1">
+						<small>
+							Upload a SVG file to overlay in the window of the device. Note takes the window dimensions of the device template and places it in the correct place. 
+						</small>
+					</p>
+				</li>
 				<li id="li_4">
 					<label class="description" for="element_4">
 						What type of laser cutting machine is this for? 
@@ -148,11 +181,11 @@ $n++;
 							<option value="svg" selected="selected">
                                 SVG
 							</option>
-							<option value="jpg">
-								JPEG
+							<option value="wmf">
+								WMF
 							</option>
-							<option value="png">
-								PNG
+							<option value="eps">
+								EPS
 							</option>
 							<option value="pdf">
 								PDF

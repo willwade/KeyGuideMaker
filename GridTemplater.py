@@ -73,7 +73,7 @@ def createGrid(type,dpi,w,h,cellspacing,spacingunits,x,y,linewidth,fname='output
                 size = (str(cellwidth)+"mm", str(cellheight)+"mm"), 
                 stroke_width = "0.01mm", 
                 stroke = "black",  
-                fill = "#ffffff", 
+                fill = "none", 
                 rx = ("4"), ry = ("4")))
 
     #print(dwg.tostring())

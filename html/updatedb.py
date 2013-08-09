@@ -59,7 +59,7 @@ for file in items:
             with open('db/Type'+type+'.csv', 'a') as csvfile:
                 optwriter = csv.writer(csvfile)
                 if (id==0):
-                    optwriter.writerow(['id', 'desc', 'xml'])
+                    optwriter.writerow(['id', 'desc', 'xml', 'winheight', 'winwidth', 'dpi'])
                 optwriter.writerow([id+1, name, shortname])
                 csvfile.close()
 

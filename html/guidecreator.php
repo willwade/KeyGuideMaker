@@ -1,12 +1,18 @@
 <?php
 
-ini_set('error_reporting', E_ALL);
+ini_set('error_reporting', E_NOTICE);
 ini_set ( "display_errors", "1");
 ini_set ( "display_startup_errors", "1");
 ini_set ( "html_errors", "1");
 ini_set ( "docref_root", "http://www.php.net/");
 ini_set ( "error_prepend_string", "<div style='color:red; font-family:verdana; border:1px solid red; padding:5px;'>");
 ini_set ( "error_append_string", "</div>");
+
+function unlinkFiles($files){
+    foreach($files as $file){
+        @unlink($file);
+    }
+}
 
 function get_random_string($valid_chars, $length)
 {
@@ -60,13 +66,47 @@ if ($_POST){
     }
     #change the colour?
     
+    #lets grab any file uploaded and the window position..
+    $files_to_delete = array();
+    $newtemp = '';
+    if(array_key_exists('usefile',$_POST)){
+        $ext = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
+        if (trim($_FILES['file']['type']) == 'image/svg+xml'){
+            $target_path = realpath('createddesigns/');
+            $target_name = get_random_string('abcdefghijklmnopqrstuvwxyz018', 6).'.svg';
+            $target_file = $target_path .'/'.$target_name ;
+            if(move_uploaded_file($_FILES['file']['tmp_name'], $target_file)) {
+                array_push($files_to_delete, $target_file);
+                #echo "The file ".  basename( $_FILES['file']['name'])." has been uploaded";
+                #now create the design.xml file
+                $template = file_get_contents($target_path.'/template.xml');
+                $template = str_replace("%n", 'temp', $template);
+                $template = str_replace("%t", $type, $template);
+                # remember its always alongside the xml file. dats de rulez
+                $template = str_replace("%src", $target_name, $template);
+                $template = str_replace("%x", $_POST['xpos'], $template);
+                $template = str_replace("%y", $_POST['ypos'], $template);
+                $newtfile = get_random_string('abcdefghijklmnopqrstuvwxyz018', 6);
+                $newtemp = $target_path.'/'.$newtfile.'.xml';
+                file_put_contents($newtemp, $template);
+                array_push($files_to_delete, $newtemp);
+                $opts.=$newtfile.',';
+            } else {
+                die("There was an error uploading the file, please try again!");
+            }
+        } else {
+            die("You need to upload an SVG file");
+        }
+    }
     
     //lazy approach to strip last comma
     $opts = substr($opts, 0, -1);
     # now do the stacking. NB: always svg
-    $fname = realpath('createddesigns/').'/'.get_random_string('abcdefghijklmnopqrstuvwxyz018', 6).'-guide.svg';    
+    $fname = realpath('createddesigns/').'/'.get_random_string('abcdefghijklmnopqrstuvwxyz018', 6).'-guide.svg';
+    array_push($files_to_delete, $fname);    
     //Parse the script output
-    $cmd='KeyGuideMaker.py -t '.$type.' -d '.'"'.$opts.'" -f '.$fname.' -m'.$_POST['formachine'];
+    $cmdtemps = ($newtemp == '' ? '' : ' -p '.$target_path);
+    $cmd='KeyGuideMaker.py -t '.$type.' -d '.'"'.$opts.'" -f '.$fname.' -m'.$_POST['formachine'].$cmdtemps;
     $path = "/usr/bin/python ".realpath('../').'/'.$cmd;
     shell_exec($path);
     
@@ -78,7 +118,7 @@ if ($_POST){
         $convertcmd = '/usr/bin/uniconvertor '.$fname.' '.$fnamebeforesvg.'.'.$_POST['format'];
         shell_exec($convertcmd);
         $fname = $fnamebeforesvg.'.'.$_POST['format'];
-        unlink($fnamebeforesvg.'.svg');
+        array_push($files_to_delete, $fnamebeforesvg.'.svg');
     }
     
     if (file_exists($fname)){
@@ -95,13 +135,15 @@ if ($_POST){
             header('Content-Type: application/pdf');
         }
         echo file_get_contents($fname);
-        unlink($fname);
+        unlinkFiles($files_to_delete);
         exit();
     } else {
         echo "Sorry. Something went wrong\n<br \>";
         print_r($_POST);
+        echo "cmd:".$cmd."<br/>";
         echo "fname:".$fname."<br/>";
         echo "convertcmd:".$convertcmd."<br/>";
+        unlinkFiles($files_to_delete);
     }
 }
 ?>

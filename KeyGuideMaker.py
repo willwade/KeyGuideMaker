@@ -34,22 +34,26 @@ except ImportError:
 
 # Simply adds a layout to a design
 
-def addLayout(design,images):
-    tree = ET.parse(__location__+"/templates/"+design+".xml").getroot()
-    # All the following aren't actually needed.. yet!
-    #name= tree.findtext("name")
-    #type= tree.findtext("type")
-    #case= tree.findtext("case")
-    # for each layout..
-    for image in tree.findall('image'):
-        isource = image.get("source")
-        ipos = image.get("position").split(",")
-
-        img = sg.fromfile(__location__+'/templates/%s' % isource)
-        iobj = img.getroot()
-        iobj.moveto(ipos[0],ipos[1])
-        images.append(iobj)
-    return True
+def addLayout(templatedir,design,images):
+    designFile=getFile(templatedir, design+".xml")
+    if (designFile):
+        tree = ET.parse(designFile).getroot()
+        # All the following aren't actually needed.. yet!
+        #name= tree.findtext("name")
+        #type= tree.findtext("type")
+        #case= tree.findtext("case")
+        # for each layout..
+        # NB: Images are assumed to be at the same directory path of the xml file
+        for image in tree.findall('image'):
+            isource = image.get("source")
+            ipos = image.get("position").split(",")
+            img = sg.fromfile(os.path.dirname(designFile)+'/'+isource)
+            iobj = img.getroot()
+            iobj.moveto(ipos[0],ipos[1])
+            images.append(iobj)
+        return True
+    else:
+        return False
 
 def recolourforlab(svg,formachine):
     if formachine=='ponoko' or formachine=='razorlab':
@@ -57,34 +61,48 @@ def recolourforlab(svg,formachine):
     else:
         return svg
 
-def createDesign(type, designs, filename="output", output="svg", formachine="epilog-mini"):
-    # Whats the type? Lets get the size and basic outline..
+def getFile(dirs, file):
+    for dir in dirs:
+        if os.path.isdir(dir):
+            listing = os.listdir(dir)
+            for infile in listing:
+                if (file == infile):
+                    return dir+'/'+file
+    return False
+
+def createDesign(type, templatedir, designs, filename="output", output="svg", formachine="epilog-mini"):
+    # now get a list of template directories
+    templatedir.append(__location__+'/templates/')
     
-    tree = ET.parse(__location__+"/templates/Type_"+type+".xml")
-    doc = tree.getroot()
-    #create new SVG figure - dimensions of iPad
-    stackedLayout = sg.SVGFigure(doc.find('width').text, doc.find('height').text)
-    #lets add the type layout
-    images = []
-    addLayout('Type_'+type,images)
+    # Whats the type? Lets get the size and basic outline..
+    typeFile=getFile(templatedir, "Type_"+type+".xml")
+    if(typeFile):
+        tree = ET.parse(typeFile)
+        doc = tree.getroot()
+        #create new SVG figure - dimensions of iPad
+        stackedLayout = sg.SVGFigure(doc.find('width').text, doc.find('height').text)
+        #lets add the type layout
+        images = []
+        addLayout(templatedir,'Type_'+type,images)
 
-    # now add each of the designs    
-    for design in designs:
-        addLayout(design,images)
-
-    # append plots and labels to figure
-    stackedLayout.append(images)
-    # save generated SVG files
-    if (filename=='stream'):
-        print recolourforlab(stackedLayout.to_str(),formachine)
-    else:
-        data = recolourforlab(stackedLayout.to_str(),formachine)
-        if not (filename.endswith('.svg')):
-            filename = filename+'.svg'
-        svg_file = open(filename, "wb")
-        svg_file.write(data)
-        svg_file.close()        
+        # now add each of the designs    
+        for design in designs:
+            addLayout(templatedir,design,images)
         
+        # append plots and labels to figure
+        stackedLayout.append(images)
+        # save generated SVG files
+        if (filename=='stream'):
+            print recolourforlab(stackedLayout.to_str(),formachine)
+        else:
+            data = recolourforlab(stackedLayout.to_str(),formachine)
+            if not (filename.endswith('.svg')):
+                filename = filename+'.svg'
+            svg_file = open(filename, "wb")
+            svg_file.write(data)
+            svg_file.close()        
+    else:
+        return 'Error. No Type file found'
     
 # to define values for comma sep list of values
 def csv(value):
@@ -99,6 +117,8 @@ parser.add_argument('--filename','-f', type=str, default="output", help='Name of
 parser.add_argument('--logfile','-l', type=str, default="", help='Logfile location. NB: If blank no log created')      
 parser.add_argument('--formachine','-m', type=str, default="epilog-mini", help='Change the format of the file ready for a particular machine. e.g ponoko or razorlab need blue instead of black.')      
 parser.add_argument('--version', action='version', version='%(prog)s 1.0', help='Get version number')
+parser.add_argument('--templatedirs','-p', type=csv, default='', help='Provide additional directories to search for templates')
+
 # All the components of a Server request
 args = parser.parse_args()
 
@@ -107,4 +127,4 @@ __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file
 
 if (args.logfile!=''):
     logging.basicConfig(filename='KeyGuideMaker.log',level=logging.DEBUG)
-createDesign(args.type,args.designs,args.filename,args.output,args.formachine)
+createDesign(args.type,args.templatedirs,args.designs,args.filename,args.output,args.formachine)

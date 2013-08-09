@@ -1,0 +1,6 @@
+<design>
+    <name>%n</name>
+    <type>%t</type>
+    <case>fullscreen</case>
+    <image source="%src" position="%x,%y" id="%n"/>
+</design>
