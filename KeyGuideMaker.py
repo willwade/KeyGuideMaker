@@ -1,15 +1,30 @@
 #!/usr/bin/env python
-
+# Use like: ./KeyGuideMaker.py -t iPad -d "TouchChat-80, iPadHomeButton" -f will
 """
-    Allows you to create a keyguide/guard
-    # run with
-    -type -designs (csv) -output -formachine
-    # To turn this into a binary
-    python pyinstaller.py -F -w KeyGuideMaker.py
-    (w for windowless version)
-"""
+Usage: KeyGuideMaker [-h] [--type TYPE] [--designs DESIGNS] [--output OUTPUT]
+                     [--filename FILENAME] [--logfile LOGFILE]
+                     [--machine FORMACHINE]
+                     [--templatedirs TEMPLATEDIRS]
 
-import argparse
+Creates keyguides from xml design files and svgs.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --type=TYPE, -t=TYPE  What device are these for? iPad, iPadMini, Powerbox?
+  --designs=DESIGNS, -d=DESIGNS
+                        list the name of the designs you want to convert to a
+                        guide. NB: uses the filenames of the XML files
+  --filename=FILENAME, -f=FILENAME
+                        Name of the final keyguide image that gets created [default: output]
+  --logfile=LOGFILE, -l=LOGFILE
+                        Logfile location. NB: If blank no log created
+  --machine=MACHINE, -m=MACHINE
+                        Change the format of the file ready for a particular
+                        machine. e.g ponoko or razorlab need blue instead of
+                        black. [default: epilog-mini]
+  --templatedirs=TEMPLATEDIRS, -p=TEMPLATEDIRS
+                        Provide additional directories to search for templates
+"""
 import logging
 import os
 # Needs https://github.com/btel/svg_utils
@@ -23,6 +38,12 @@ try:
     import xml.etree.cElementTree as ET
 except ImportError:
     import xml.etree.ElementTree as ET
+try:
+    from docopt import docopt
+except ImportError:
+    exit('This example requires that `docopt` library'
+         ' is installed: \n    pip install docopt\n'
+         'https://github.com/docopt/docopt')
 
 # call with
 # -type -designs (comma seperated list of designs)
@@ -33,7 +54,7 @@ except ImportError:
 # Simply adds a layout to a design
 def add_layout(templatedir, design, images):
     """Add layout
-       Add a layout to the overall design. 
+       Add a layout to the overall design.
         Takes a XML template file
     """
     design_file = get_file(templatedir, design+".xml")
@@ -74,7 +95,7 @@ def get_file(dirs, file):
     return False
 
 def create_design(type, templatedir, designs, filename="output",
-                         output="svg", formachine="epilog-mini"):
+                          formachine="epilog-mini"):
     """create_design
         This is really the _main_ function. Lays one set of images over another
     """
@@ -115,28 +136,16 @@ def create_design(type, templatedir, designs, filename="output",
 # to define values for comma sep list of values
 def csv(value):
     """Simply maps a csv field to a list"""
-    return map(str, value.split(","))
+    if value != None:
+        return map(str, value.split(","))
+    else:
+        return list()
 
-parser = argparse.ArgumentParser(prog = 'KeyGuideMaker', description =
-                'Creates keyguides from xml design files and svgs.Use like:\
-                ./KeyGuideMaker.py -t iPad -d "TouchChat-80,\
-                      iPadHomeButton" -f will')
-# Basics
-parser.add_argument('--type', '-t', type=str, default='ipad', help='What device are these for? iPad, iPadMini, Powerbox?')
-parser.add_argument('--designs', '-d', type=csv, help='list the name of the designs you want to convert to a guide. NB: uses the filenames of the XML files')
-parser.add_argument('--output', '-o', type=str, default="SVG", help='Not working. EPS, SVG, PDF, PS')
-parser.add_argument('--filename', '-f', type=str, default="output", help='Name of the final keyguide image that gets created')
-parser.add_argument('--logfile', '-l', type=str, default="", help='Logfile location. NB: If blank no log created')
-parser.add_argument('--formachine', '-m', type=str, default="epilog-mini", help='Change the format of the file ready for a particular machine. e.g ponoko or razorlab need blue instead of black.')
-parser.add_argument('--version', action='version', version='%(prog)s 1.0', help='Get version number')
-parser.add_argument('--templatedirs', '-p', type=csv, default='', help='Provide additional directories to search for templates')
+if __name__ == '__main__':
+    arguments = docopt(__doc__, version='KeyGuideMaker vb1')
+    #Fix the location if called elsewhere
+    __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
 
-# All the components of a Server request
-args = parser.parse_args()
-
-#Fix the location if called elsewhere
-__location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
-
-if (args.logfile!=''):
-    logging.basicConfig(filename='KeyGuideMaker.log', level=logging.DEBUG)
-create_design(args.type, args.templatedirs, args.designs, args.filename, args.output, args.formachine)
+    if (arguments['--logfile']!=None):
+        logging.basicConfig(filename='KeyGuideMaker.log', level=logging.DEBUG)
+    create_design(arguments['--type'], csv(arguments['--templatedirs']), csv(arguments['--designs']), arguments['--filename'], arguments['--machine'])
