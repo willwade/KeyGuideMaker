@@ -1,0 +1,12 @@
+<type>
+    <name>Accent-1200</name>
+    <width>284mm</width>
+    <height>174mm</height>
+    <winwidth>255</winwidth>
+    <winheight>110</winheight>
+    <dpi>132</dpi>
+    <winxpos>38</winxpos>
+    <winypos>50</winypos>
+    <image source="Type_Accent1200Outline.svg" position="5,1"/>
+    <optionals>Accent1200Toolbox,Accent12000PredWindow,Accent1200HelpButton,Accent1200MessagwWin</optionals>
+</type>

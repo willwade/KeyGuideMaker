@@ -30,14 +30,15 @@ function get_random_string($valid_chars, $length)
 }
 
 if ($_POST){      
-
 #./GridCreator.py --cellwidth 7 --cellheight 5 --winwidth 198 --winhight 148 --cellspacing 1.705"
     $cmd = 'GridTemplater.py ';
     $cellwidth = filter_input(INPUT_POST, "cellwidth", FILTER_VALIDATE_INT);
     $cellheight = filter_input(INPUT_POST, "cellheight", FILTER_VALIDATE_INT);
     $winhight = filter_input(INPUT_POST, "winhight", FILTER_VALIDATE_INT);
     $winwidth = filter_input(INPUT_POST, "winwidth", FILTER_VALIDATE_INT);
+    $rxy = filter_input(INPUT_POST, "rxy", FILTER_VALIDATE_INT);
     $cellspacing = filter_input(INPUT_POST, "cellspacing", FILTER_VALIDATE_FLOAT);
+    $units = $_POST['units'];
 
     if (is_int($cellwidth)){
         $cmd.='--cellwidth '.$cellwidth.' ';
@@ -56,14 +57,22 @@ if ($_POST){
     } 
 
     if (is_numeric($cellspacing)){
+        $cmd.='--rxy '.$rxy.' ';
+    } 
+
+    if (is_numeric($rxy)){
         $cmd.='--cellspacing '.$cellspacing.' ';
+    } 
+    
+     if (is_string($units)){
+        $cmd.='-u '.$units.' ';
     } 
     
     $fname = realpath('createddesigns/').'/'.get_random_string('abcdefghijklmnopqrstuvwxyz018', 6).'-template';    
     //Parse the script output
     $cmd.= '-f '.$fname;
-    $path = "/usr/bin/python ".realpath('../').'/'.$cmd;
-#    $path = "/usr/lib/python2.7/bin/python ".realpath('../').'/'.$cmd;
+#    $path = "/usr/bin/python ".realpath('../').'/'.$cmd;
+    $path = "/usr/lib/python2.7/bin/python ".realpath('../').'/'.$cmd;
     shell_exec($path);
         
     
