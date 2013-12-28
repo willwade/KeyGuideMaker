@@ -1,0 +1,13 @@
+<type>
+    <name>Dell Latitude 10 w Survivor Case</name>
+    <width>258mm</width>
+    <height>161mm</height>
+    <winwidth>224mm</winwidth>
+    <winheight>126mm</winheight>
+    <dpi>153</dpi>
+    <winxpos>15.6mm</winxpos>
+    <winypos>23.12mm</winypos>
+    <image source="Type_DellLat10Survivor.svg" position="0,0"/>
+    <optionals></optionals>
+    <notes>Not normal. Has some shapes for Win Button and camera</notes>
+</type>

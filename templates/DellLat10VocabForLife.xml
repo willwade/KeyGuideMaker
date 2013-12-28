@@ -1,0 +1,6 @@
+<design>
+    <name>VocabForLife to fit Dell 10</name>
+    <type>DellLat10</type>
+    <case>Any</case>
+    <image source="Dell10VocabForLife.svg" position="86,72"/>
+</design>

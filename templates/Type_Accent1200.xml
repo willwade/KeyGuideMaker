@@ -8,5 +8,5 @@
     <winxpos>38</winxpos>
     <winypos>50</winypos>
     <image source="Type_Accent1200Outline.svg" position="5,1"/>
-    <optionals>Accent1200Toolbox,Accent12000PredWindow,Accent1200HelpButton,Accent1200MessagwWin</optionals>
+<optionals></optionals>
 </type>

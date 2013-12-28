@@ -45,7 +45,7 @@ except ImportError:
 try:
     from docopt import docopt
 except ImportError:
-    exit('This example requires that `docopt` library'
+    exit('This script requires that `docopt` library'
          ' is installed: \n    pip install docopt\n'
          'https://github.com/docopt/docopt')
 

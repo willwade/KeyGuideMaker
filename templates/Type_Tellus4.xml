@@ -1,0 +1,13 @@
+<type>
+    <name>Tellus4</name>
+    <width>335mm</width>
+    <height>261mm</height>
+    <winwidth>282</winwidth>
+    <winheight>180</winheight>
+    <dpi>113</dpi>
+    <winxpos>24</winxpos>
+    <winypos>27</winypos>
+    <image source="Type_iPadOutline.svg" position="0,0"/>
+    <optionals></optionals>
+    <notes>Directly in the screen bevel. 4mm deep</notes>
+</type>

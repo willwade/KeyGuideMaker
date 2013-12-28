@@ -26,7 +26,12 @@ for file in items:
     if file.startswith("Type_") and file.endswith(".xml"):
         tree = etree.parse(tdir+file)
         name= tree.findtext("name")
+        winwidth = tree.findtext("winwidth")
+        winheight= tree.findtext("winheight")
         shortname = os.path.splitext(file)[0][5:]
+        with open('db/TypeDetails.csv', 'a') as csvfile:
+            optwriter = csv.writer(csvfile)
+            optwriter.writerow([shortname,winheight,winwidth])   
         types.append(shortname)
         optionals= tree.findtext("optionals").split(',')
         if len(optionals)>0:

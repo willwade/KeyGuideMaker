@@ -1,0 +1,6 @@
+<design>
+    <name>VocabForLife to fit Dell 10 w Griffin</name>
+    <type>DellLat10GSurvivor</type>
+    <case>Any</case>
+    <image source="Dell10VocabForLife.svg" position="45,65"/>
+</design>
