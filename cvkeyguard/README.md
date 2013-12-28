@@ -13,8 +13,9 @@ kamosion
 * [OpenCV 2.x](https://github.com/btel/svg_utils)
 * [pygame]
 * [easygui] 
+* [simplesvg]
 
-NB: EasyGui is modified. Please use the modified version in place of the installed lib file..
+NB: SimpleSVG is modified. Please use the modified version in place of the installed lib file..
 
 
 ##Random notes##
