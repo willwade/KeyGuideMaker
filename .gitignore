@@ -54,3 +54,4 @@ nosetests.xml
 .project
 .pydevproject
 >>>>>>> 1755eeb75782eae7252371933655e0189eb326f7
+.idea/*
